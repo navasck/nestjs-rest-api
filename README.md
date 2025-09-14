@@ -100,10 +100,28 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 ## commands
 
+
+
+  ```bash
   $ npm i -g @nestjs/cli
   $ nest new project-name
 
+
+  # Generates a new module.
   nest g module auth
-  nest g module auth
+
+  # Generates a new service file.
   nest generate service users
+
+  # Generates a new controller file.
+  nest g controller <name>
+
+  # creates a complete set of files to manage a user resource.
   nest g resource <name>
+
+  # Displays a list of all available commands and their descriptions.
+  nest help
+
+  # Shows information about your project's dependencies and local system, which is helpful for debugging and sharing project information.
+  nest info
+```

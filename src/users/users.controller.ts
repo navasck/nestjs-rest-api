@@ -23,6 +23,11 @@ export class UsersController {
     return this.usersService.findAll(role);
   }
 
+  @Get('interns') // GET /users/interns
+  findAllInterns() {
+    return this.usersService.findAll('INTERN');
+  }
+
   @Get(':id') // GET /users/:id
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.findOne(id);
@@ -103,3 +108,9 @@ export class UsersController {
 //     return this.usersService.delete(+id);
 //   }
 // }
+
+// ParseIntPipe and ValidationPipe are built -in pipes in NestJS used for transforming and validating data, respectively.They are used in controllers to ensure that incoming data from HTTP requests meets the expected format and constraints.
+
+// ParseIntPipe is a transformation pipe.Its primary usage is to convert a string from a route parameter or query string into a JavaScript number.
+
+// ValidationPipe is a validation pipe.Its main usage is to validate the structure and content of an incoming request body against a Data Transfer Object(DTO).

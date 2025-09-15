@@ -5,11 +5,13 @@ import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { OrdersModule } from './orders/orders.module';
+import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     ProductsModule,
     UsersModule,
     AuthModule,
@@ -37,3 +39,5 @@ import { APP_GUARD } from '@nestjs/core';
   ],
 })
 export class AppModule {}
+
+// Using @nestjs/config is a critical step in making your application ready for different environments (development, testing, production) without changing the underlying code.

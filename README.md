@@ -118,6 +118,7 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
   # creates a complete set of files to manage a user resource.
   nest g resource <name>
+  nest g resource employees
 
   # Displays a list of all available commands and their descriptions.
   nest help
@@ -125,3 +126,31 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
   # Shows information about your project's dependencies and local system, which is helpful for debugging and sharing project information.
   nest info
 ```
+
+
+## Prisma database
+
+  ```bash
+
+  npm install @prisma/client pg
+  npm install -D prisma
+
+  # initialize Prisma in your project by running
+  npx prisma init
+
+  # in env
+  DATABASE_URL="postgresql://username:password@localhost:5432/your_database_name?schema=public"
+
+#(to generate prisma client, then we can Start by importing your Prisma Client)
+     npx prisma generate
+
+     npx prisma migrate dev --name init
+
+     pgAdmin : it's a free, open-source, graphical management tool designed for managing PostgreSQL databases, providing a user-friendly interface for creating, maintaining, and using database objects, as well as executing SQL queries.
+
+     npx prisma studio ( Prisma Studio will run on http://localhost:5555/ )
+     npx tsx ./db/seed   (to seed database)
+
+  ```
+
+

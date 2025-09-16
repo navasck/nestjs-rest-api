@@ -9,6 +9,8 @@ import { MyLoggerModule } from './my-logger/my-logger.module';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { PrismaService } from './prisma/prisma.service';
+import { EmployeesModule } from './employees/employees.module';
 
 @Module({
   imports: [
@@ -30,6 +32,7 @@ import { APP_GUARD } from '@nestjs/core';
       },
     ]),
     MyLoggerModule,
+    EmployeesModule,
   ], // Import the new Modules
   controllers: [AppController],
   providers: [
@@ -38,6 +41,7 @@ import { APP_GUARD } from '@nestjs/core';
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
     },
+    PrismaService,
   ],
 })
 export class AppModule {}

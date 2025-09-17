@@ -11,6 +11,7 @@ import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { PrismaService } from './prisma/prisma.service';
 import { EmployeesModule } from './employees/employees.module';
+import { PostsModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { EmployeesModule } from './employees/employees.module';
     ]),
     MyLoggerModule,
     EmployeesModule,
+    PostsModule,
   ], // Import the new Modules
   controllers: [AppController],
   providers: [

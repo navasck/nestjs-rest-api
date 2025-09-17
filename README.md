@@ -151,6 +151,23 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
      npx prisma studio ( Prisma Studio will run on http://localhost:5555/ )
      npx tsx ./db/seed   (to seed database)
 
+
+
+     @relation
+
+     @relation in Prisma is a field attribute used to define relationships between different models in your Prisma schema.
+
+     It's how you connect and represent a database relationship (like one-to-one, one-to-many, or many-to-many)
+
+     How @relation Works
+The @relation attribute is typically added to one or more fields in your models. It requires a few key arguments to fully define the relationship:
+
+fields: This argument specifies the foreign key field(s) on the current model. This is the field that will store the ID of the related record.
+
+references: This argument specifies the field(s) on the related model that the fields argument will reference. This is almost always the id field of the other model.
+
+name: This optional argument is used to disambiguate relationships between the same two models, especially in cases where there are multiple relationships between them. For example, a User model might have an invitedBy and an approvedBy relationship to itself.
+
   ```
 
 

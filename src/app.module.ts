@@ -3,7 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
 import { OrdersModule } from './orders/orders.module';
 import { MyLoggerModule } from './my-logger/my-logger.module';
 import { ConfigModule } from '@nestjs/config';
@@ -18,7 +17,6 @@ import { PostsModule } from './post/post.module';
     ConfigModule.forRoot(),
     ProductsModule,
     UsersModule,
-    AuthModule,
     OrdersModule,
     ThrottlerModule.forRoot([
       {

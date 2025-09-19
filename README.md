@@ -171,3 +171,18 @@ name: This optional argument is used to disambiguate relationships between the s
   ```
 
 
+  ## @nestjs/platform-express
+
+  @nestjs/platform-express is a core package in NestJS that acts as the adapter for the Express.js framework. It provides the necessary bridge to run a NestJS application on top of the popular Express HTTP server.
+
+  Essentially, @nestjs/platform-express is what transforms your NestJS application from a set of logical components into a fully functional web server that can receive and respond to HTTP requests using the Express framework.
+
+  What It Does
+
+  Foundation,
+
+  It integrates the core NestJS concepts—like controllers, modules, and interceptors—with Express's underlying functionality.
+
+  Simplified File Uploads
+
+

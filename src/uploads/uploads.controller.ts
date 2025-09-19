@@ -10,6 +10,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 @Controller('uploads')
 export class UploadsController {
   @Post()
+  // Applies the interceptor to all routes in this controller
   @UseInterceptors(FileInterceptor('image')) // 'image' is the form field name
   uploadImage(@UploadedFile() file: Express.Multer.File) {
     // You can now process the uploaded file here

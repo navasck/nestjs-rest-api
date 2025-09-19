@@ -1,7 +1,5 @@
 // src/uploads/uploads.controller.ts
 
-// src/upload/upload.controller.ts
-
 import {
   Controller,
   Post,
@@ -23,12 +21,10 @@ export class UploadController {
       uploadType: 'single',
 
       file: {
+        message: 'Image uploaded successfully!',
         originalName: file.originalname,
-
         fileName: file.filename,
-
         path: file.path,
-
         size: file.size,
       },
     };
@@ -43,12 +39,10 @@ export class UploadController {
       uploadType: 'multiple',
 
       files: files.map((file) => ({
+        message: 'Image uploaded successfully!',
         originalName: file.originalname,
-
         fileName: file.filename,
-
         path: file.path,
-
         size: file.size,
       })),
     };

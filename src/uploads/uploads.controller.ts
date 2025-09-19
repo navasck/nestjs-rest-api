@@ -1,23 +1,56 @@
 // src/uploads/uploads.controller.ts
+
+// src/upload/upload.controller.ts
+
 import {
   Controller,
   Post,
-  UseInterceptors,
   UploadedFile,
+  UploadedFiles,
+  UseInterceptors,
 } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('uploads')
-export class UploadsController {
-  @Post()
-  // Applies the interceptor to all routes in this controller
-  @UseInterceptors(FileInterceptor('image')) // 'image' is the form field name
-  uploadImage(@UploadedFile() file: Express.Multer.File) {
-    // You can now process the uploaded file here
-    console.log(file);
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+
+@Controller('upload')
+export class UploadController {
+  // Single File Upload
+
+  @Post('single')
+  @UseInterceptors(FileInterceptor('file')) // 'file' is the form field name
+  uploadSingle(@UploadedFile() file: Express.Multer.File) {
     return {
-      message: 'Image uploaded successfully!',
-      filename: file.filename,
+      uploadType: 'single',
+
+      file: {
+        originalName: file.originalname,
+
+        fileName: file.filename,
+
+        path: file.path,
+
+        size: file.size,
+      },
+    };
+  }
+
+  // Multiple Files Upload
+
+  @Post('multiple')
+  @UseInterceptors(FilesInterceptor('files', 5))
+  uploadMultiple(@UploadedFiles() files: Express.Multer.File[]) {
+    return {
+      uploadType: 'multiple',
+
+      files: files.map((file) => ({
+        originalName: file.originalname,
+
+        fileName: file.filename,
+
+        path: file.path,
+
+        size: file.size,
+      })),
     };
   }
 }

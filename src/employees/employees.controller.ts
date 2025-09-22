@@ -8,6 +8,8 @@ import {
   Delete,
   Query,
   Ip,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { Prisma, Role } from '@prisma/client';
@@ -32,7 +34,18 @@ export class EmployeesController {
       `Request for ALL Employees\t${ip}`,
       EmployeesController.name,
     );
-    return this.employeesService.findAll(role);
+    // return this.employeesService.findAll(role);
+    try {
+      return this.employeesService.findAll(role);
+    } catch (e) {
+      throw new HttpException(
+        'server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        {
+          cause: e,
+        },
+      );
+    }
   }
 
   @Throttle({ short: { ttl: 1000, limit: 1 } })
@@ -58,3 +71,15 @@ export class EmployeesController {
 // The @SkipThrottle() decorator is applied at the class level (EmployeesController).This means all endpoints in this controller are excluded from any default, global throttling rules defined in your NestJS application.
 
 // @Ip(): This decorator injects the client's IP address into the ip parameter, which is then used for logging.
+
+// common subclasses of NestJS's HttpException.
+
+// BadRequestException(400 Bad Request)
+
+// UnauthorizedException(401 Unauthorized)
+
+// NotFoundException(404 Not Found)
+
+// ForbiddenException(403 Forbidden)
+
+// InternalServerErrorException(500 Internal Server Error)
